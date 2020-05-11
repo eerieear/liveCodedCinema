@@ -1,0 +1,30 @@
+//e_e // eerie_ear // @sebzabs
+//let us transduce this into audio
+//
+find a way to capture the pixel scroll information and translate dynamics and harmoncs
+//
+// osc1= ()=> osc(400)
+osc(0.05,0.01,1.4)
+.mult(shape(2,0,0.3)
+	.modulateScale(osc(8, -0.05))
+)
+.diff(shape(2, 0.2,0.2)
+	.modulate(osc(0.005, -0.03),1.9,0.2)
+)
+.modulateScale(
+	noise(4,0.1)
+	.diff(osc(12, 0.01, 0.11))
+	.mult(osc(20, -0.01, 0.11)), -0.7, 1
+)
+.scale(0.9)
+// .rotate(() => 1/time)
+.modulateHue(src(o1).scale(0.5), 10)
+.modulateScale(osc(40, -0.2, 2))
+// .colorama(8)
+.posterize(4).thresh(0.02)
+.mult(shape(2,0.15,0.9))
+// .luma(0.46)
+//.invert()
+.out(o1)
+
+render(o1)
